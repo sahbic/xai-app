@@ -1,2 +1,2 @@
 # xai-app
-Prototype for an Explainable ML model in production
+Prototype for an Interpretable Machine Learning model in production
