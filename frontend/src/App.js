@@ -1,27 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Inputs from './components/inputs'
 
+import { Container, Row, Col } from 'react-bootstrap'
+
 function App() {
+
+  // const [ prediction, setPrediction ] = useState(0)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <Inputs />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Row>
+          <Col md={6} style={{padding:"2rem 2rem"}}>
+            <h4 className="form-title">Model Inputs</h4>
+            <Inputs />
+          </Col>
+          <Col md={6} style={{padding:"2rem 2rem"}}>
+                <h4 className="form-title">Prediction</h4>
+                <h4 className="form-title">Why ?</h4>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
