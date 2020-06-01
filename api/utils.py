@@ -17,3 +17,13 @@ def get_features():
 def get_prediction(data):
     prediction = model.predict_proba(np.array(data).reshape(1, -1))
     return(prediction)
+
+def mapValues(data):
+    for el in feature_list["features"]:
+        if el['type'] == 'categorical':
+            data[el['name']] = el['input'][data[el['name']]]
+        elif el['type'] == 'numeric':
+            data[el['name']] = float(data[el['name']])
+        else:
+            data[el['name']] = data[el['name']]
+    return(data)

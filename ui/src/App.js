@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import './App.css';
 
 import Inputs from './components/inputs'
@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 function App() {
 
-  // const [ prediction, setPrediction ] = useState(0)
+  // const [ prediction, setPrediction ] = useState([])
 
   return (
     <div className="App">

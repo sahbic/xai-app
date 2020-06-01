@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Row, Col } from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider'
 
-const SliderWithInputFormControl = ({min, max, step}) => {
-
-    const [ value, setValue ] = useState(min);
+const SliderWithInputFormControl = ({min, max, step, value, onChange}) => {
   
     return (
         <>
@@ -12,12 +10,12 @@ const SliderWithInputFormControl = ({min, max, step}) => {
           <Col xs="8">
             <RangeSlider
               min={min} max={max} step={step}
-              value={value}
-              onChange={e => setValue(Number(e.target.value))}
+              value={Number(value)}
+              onChange={onChange}
             />        
           </Col>
           <Col xs="4">
-            <Form.Control value={value} onChange={e => setValue(Number(e.target.value))}/>
+            <Form.Control value={value} onChange={onChange}/>
           </Col>
         </Row>
         </>
