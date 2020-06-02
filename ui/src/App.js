@@ -58,6 +58,7 @@ function App() {
       let variables = [...data]
       variables[i]["value"] = value
       setData(variables)
+      handleSubmit(e)
   }
   
 

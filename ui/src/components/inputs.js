@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Row, Col} from 'react-bootstrap'
+import { Form, Row, Col} from 'react-bootstrap'
 
 import SliderWithInputFormControl from './rangeslider'
 
@@ -30,7 +30,6 @@ function Inputs({ data, handleChange, handleSubmit }) {
                 </Col>
                 </Form.Group>
             ))}
-            <Button variant="primary" type="submit">Submit</Button>
         </Form>
     )
 

@@ -25,7 +25,7 @@ function Prediction({ prediction, params }) {
         <>
             <p style={{paddingLeft: "20px"}}>The probability of <b>{params.probability}</b> is</p>
             <div className="prediction-module">
-                {prediction ? <p className={getStyle()}>{prediction.toFixed(2)*100} %</p> : <p className="no-prediction">00 %</p> }
+                {prediction ? <p className={getStyle()}>{Math.round(prediction * 100)} %</p> : <p className="no-prediction">00 %</p> }
             </div>
         </>
     )
