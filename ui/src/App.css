@@ -35,5 +35,26 @@
 }
 
 .form-title {
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.prediction-module {
+  min-height: 50px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.no-prediction {
+  color: rgb(216, 216, 216);
+  font-weight: normal;
+}
+
+.good-prediction {
+  color: rgb(4, 165, 31);
+}
+
+.bad-prediction {
+  color: rgb(197, 0, 0);
 }

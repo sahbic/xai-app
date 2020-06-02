@@ -4,26 +4,36 @@ import json
 
 MODEL_DIR = 'models/'
 
-model = pickle.load(open(MODEL_DIR + 'GBT.pickle', 'rb'))
-explainer = pickle.load(open(MODEL_DIR + 'SHAP_GBT_Explainer.pickle', 'rb'))
+DATA = json.load(open(MODEL_DIR + 'GBT_features.json', 'rb'))
 
-# feature_list = pickle.load(open(MODEL_DIR + 'GBT_features.pickle', 'rb'))
-feature_list = json.load(open(MODEL_DIR + 'GBT_features.json', 'rb'))
+MODEL = pickle.load(open(MODEL_DIR + 'GBT.pickle', 'rb'))
+EXPLAINER = pickle.load(open(MODEL_DIR + 'SHAP_GBT_Explainer.pickle', 'rb'))
 
 
 def get_features():
-    return(json.dumps(feature_list['features']))
+    return(json.dumps(DATA['features']))
 
-def get_prediction(data):
-    prediction = model.predict_proba(np.array(data).reshape(1, -1))
+def get_params():
+    params = {k: DATA[k] for k in DATA.keys() & {'probability', 'threshold', 'higherisbetter'}}
+    return(json.dumps(params))
+
+def get_prediction(inputs):
+    prediction = MODEL.predict_proba(np.array(inputs).reshape(1, -1))
     return(prediction)
 
-def mapValues(data):
-    for el in feature_list["features"]:
+def get_explanation(inputs):
+    values = list(inputs.values())
+    shap_values = EXPLAINER.shap_values(np.array(values))
+    out = [{"label":DATA['features'][i]['label'],"value":shap_values[i]} for i in range(len(DATA['features']))]
+    # out = {DATA['features'][i]['name']:shap_values[i] for i in range(len(DATA['features']))}
+    return(out)
+
+def mapValues(inputs):
+    for el in DATA["features"]:
         if el['type'] == 'categorical':
-            data[el['name']] = el['input'][data[el['name']]]
+            inputs[el['name']] = el['input'][inputs[el['name']]]
         elif el['type'] == 'numeric':
-            data[el['name']] = float(data[el['name']])
+            inputs[el['name']] = float(inputs[el['name']])
         else:
-            data[el['name']] = data[el['name']]
-    return(data)
+            inputs[el['name']] = inputs[el['name']]
+    return(inputs)
