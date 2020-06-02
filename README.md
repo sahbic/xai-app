@@ -1,6 +1,6 @@
 # xai-app
 
-Prototype for an Interpretable Machine Learning model in production
+Prototype for an Interactive & Interpretable Machine Learning model in production
 
 It is built using:
 - React.js
