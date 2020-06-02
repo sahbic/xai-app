@@ -1,9 +1,15 @@
 # xai-app
+
 Prototype for an Interpretable Machine Learning model in production
+
+It is built using:
+- React.js
+- Flask
+- Jupyter Notebook
 
 ## Preview
 
-[alt text](example.png "XAI App")
+![image](example.png "XAI App")
 
 ## Motivation
 
@@ -13,5 +19,4 @@ This app allows to interact with Machine Learning models to better understand th
 
 It uses the local interpretabilty method of SHAP values to explain why a decision was made, and highlight what are the features that are pushing the prediction value up or down.
 
-**Interpretability is the degree to which a human can understand the cause of a decision**
-Miller, Tim. “Explanation in artificial intelligence: Insights from the social sciences.” arXiv Preprint arXiv:1706.07269
+> "Interpretability is the degree to which a human can understand the cause of a decision"  Miller, Tim
